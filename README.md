@@ -34,15 +34,17 @@ controle de estoque.
 ## Principais 'Conceitos'
 
 **Estoque**
+
 Info | Descrição
------ | ---------------------------------------
+---- |---------------------------------------
 estampa | Nome da banda da estampa (20 caracteres)
 quantidade | quantidade de camisas em estoque (inteiro)
 tamanho | Tamanho da camisa (p, m ou g)
 
 **Pedido**
+
 Info | Descrição
------ | ---------------------------------------
+------|----------------------------------------
 Loja cliente | Nome da loja (20 caracteres)
 estampa | Noma da banda da estampa (20 caracteres)
 quantidade | quantidade de camisas do pedido (inteiro)
@@ -50,6 +52,7 @@ tamanho | Tamanho da camisa (p, m ou g)
 situação | Situação do Pedido (Criado, Cancelado, Processado)
 
 **Pendencia**
+
 Info | Descrição
 -----|-----------------
 Pedido | Identificador do Pedido
@@ -64,8 +67,8 @@ Pedido | Identificador do Pedido
 estampa | estampa a ser produzida
 tamanho | Tamanho da camisa (p, m ou g)
 
-## Trabalho
 
+## Trabalho
 #### Descrição
 
 Implementar utilizando as tecnologias JavaEE e Spring os Processos: Pedido de Distribuição e Controle de Produção.
