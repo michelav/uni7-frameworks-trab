@@ -1,0 +1,21 @@
+from michelav/wildfly-alpine
+
+ENV PG_VERSION 42.1.4
+ENV JBOSS_MODULE_DIR $JBOSS_HOME/modules/system/layers/base
+
+# ADD conf/dist /conf
+
+USER root
+
+RUN cd $HOME \
+    && curl -O https://jdbc.postgresql.org/download/postgresql-$PG_VERSION.jar \
+    && mkdir -p $JBOSS_MODULE_DIR/com/postgres/postgresql/main \
+    && mv $HOME/postgresql-$PG_VERSION.jar $JBOSS_MODULE_DIR/com/postgres/postgresql/main/postgresql.jar
+    # \
+    # && cp /conf/pg-module.xml $JBOSS_MODULE_DIR/com/postgres/postgresql/main/module.xml \
+    # && cp /conf/standalone-custom.xml $JBOSS_HOME/standalone/configuration/
+
+COPY conf/dist/pg-module.xml $JBOSS_MODULE_DIR/com/postgres/postgresql/main/module.xml
+COPY conf/dist/standalone-custom.xml $JBOSS_HOME/standalone/configuration/
+
+CMD ["/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "-c", "standalone-custom.xml"]

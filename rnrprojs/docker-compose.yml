@@ -1,0 +1,26 @@
+version: "3"
+services:
+  dist-db:
+    build:
+      context: .
+      dockerfile: Dockerfile-dist-db
+    restart: always
+    ports:
+      - "5432:5432"
+    # networks:
+    #   - appnet
+  dist-app:
+    build:
+      context: .
+      dockerfile: Dockerfile-dist-app
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    volumes:
+      - "/tmp/deployments:/opt/wildfly/standalone/deployments:rw"
+    depends_on:
+      - dist-db
+#     networks:
+#       - appnet
+# networks:
+#   appnet:
