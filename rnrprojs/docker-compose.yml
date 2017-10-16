@@ -7,8 +7,13 @@ services:
     restart: always
     ports:
       - "5432:5432"
-    # networks:
-    #   - appnet
+  prd-db:
+    build:
+      context: .
+      dockerfile: Dockerfile-prd-db
+    restart: always
+    ports:
+      - "5555:5432"
   dist-app:
     build:
       context: .
@@ -20,7 +25,4 @@ services:
       - "/tmp/deployments:/opt/wildfly/standalone/deployments:rw"
     depends_on:
       - dist-db
-#     networks:
-#       - appnet
-# networks:
-#   appnet:
+      - prd-db

@@ -10,5 +10,8 @@
     <module>dist-biz</module>
     <module>dist-api</module>
     <module>dist-app</module>
+    <module>prd-api</module>
+    <module>prd-biz</module>
+    <module>prd-app</module>
   </modules>
 </project>

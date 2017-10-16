@@ -1,0 +1,7 @@
+FROM postgres:10-alpine
+
+ENV POSTGRES_USER uni7
+ENV POSTGRES_PASSWORD uni7posgrad
+
+COPY conf/db/create_prd_db.sql /docker-entrypoint-initdb.d/
+

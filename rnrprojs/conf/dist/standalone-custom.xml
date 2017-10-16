@@ -166,6 +166,20 @@
                         <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
                     </validation>
                 </datasource>
+               <datasource jta="true" jndi-name="java:jboss/datasources/rnrPrdDS" pool-name="PrdDS" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://prd-db:5432/producao_camisas</connection-url>
+                    <driver>postgresql</driver>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <security>
+                        <user-name>uni7</user-name>
+                        <password>uni7posgrad</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
                 <drivers>
                     <driver name="postgresql" module="com.postgres.postgresql"/>
                     <driver name="h2" module="com.h2database.h2">
