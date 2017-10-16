@@ -180,5 +180,5 @@ A entrega deverá ser realizada no repositório até 05/11 23:59:59. Qualquer at
 
 ### Avaliação
 - Pedido de Distribuição (4,5 pt);
-- Controle de Produção (3,5 pt);
-- Discussão (2 pt).
+- Controle de Produção (4,5 pt);
+- Discussão (1 pt).
