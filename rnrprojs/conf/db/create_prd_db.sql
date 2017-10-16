@@ -10,7 +10,8 @@ DROP TABLE IF EXISTS producao CASCADE;
 
 CREATE TABLE producao (
     pid serial primary key,
-    rid integer not null
+    rid integer not null,
+    situacao varchar(12) check(situacao in ('SOLICITADA', 'CANCELADA', 'PRODUZIDA'))
 );
 
 CREATE TABLE itens_producao (

@@ -1,13 +1,21 @@
 package com.rocknrollers.prd.biz.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import java.util.List;
 
 
 /**
@@ -30,6 +38,10 @@ public class Producao implements Serializable {
 	/** Id do pedido de distribuição */
 	@XmlElement
 	private Integer rid;
+	
+	@XmlElement
+	@Enumerated(EnumType.STRING)
+	private SituacaoProducao situacao;
 
 	//bi-directional many-to-one association to ItensProducao
 	@OneToMany(mappedBy="producao")
@@ -55,6 +67,14 @@ public class Producao implements Serializable {
 		this.rid = rid;
 	}
 
+	public SituacaoProducao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(SituacaoProducao situacao) {
+		this.situacao = situacao;
+	}
+		
 	public List<ItensProducao> getItensProducaos() {
 		return this.itensProducaos;
 	}
@@ -77,4 +97,10 @@ public class Producao implements Serializable {
 		return itensProducao;
 	}
 
+}
+
+enum SituacaoProducao {
+	SOLICITADA,
+	CANCELADA,
+	PRODUZIDA
 }

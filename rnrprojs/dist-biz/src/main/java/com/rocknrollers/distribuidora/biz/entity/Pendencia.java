@@ -2,6 +2,7 @@ package com.rocknrollers.distribuidora.biz.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 
 
 /**
@@ -25,6 +26,10 @@ public class Pendencia implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private Tamanho tamanho;
+	
+	@XmlElement
+	@Enumerated(EnumType.STRING)
+	private SituacaoPendencia situacao;
 
 	//bi-directional many-to-one association to Pedido
 	@ManyToOne
@@ -65,6 +70,14 @@ public class Pendencia implements Serializable {
 	public void setTamanho(Tamanho tamanho) {
 		this.tamanho = tamanho;
 	}
+	
+	public SituacaoPendencia getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(SituacaoPendencia situacao) {
+		this.situacao = situacao;
+	}
 
 	public Pedido getPedido() {
 		return this.pedido;
@@ -74,4 +87,9 @@ public class Pendencia implements Serializable {
 		this.pedido = pedido;
 	}
 
+}
+
+enum SituacaoPendencia {
+	ABERTA,
+	RESOLVIDA
 }

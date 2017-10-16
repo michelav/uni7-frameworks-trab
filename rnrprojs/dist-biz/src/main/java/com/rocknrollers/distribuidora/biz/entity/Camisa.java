@@ -38,7 +38,7 @@ public class Camisa implements Serializable {
 	@XmlElement
 	@Enumerated(EnumType.STRING)
 	private Tamanho tamanho;
-
+	
 	public Camisa() {
 	}
 

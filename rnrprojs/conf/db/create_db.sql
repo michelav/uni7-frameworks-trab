@@ -12,7 +12,8 @@ DROP TABLE IF EXISTS pedidos CASCADE;
 
 CREATE TABLE pedidos (
     rid serial primary key,
-    loja varchar(20) not null
+    loja varchar(20) not null,
+    situacao varchar(12) check(situacao in ('CRIADO', 'CANCELADO', 'PROCESSADO'))
 );
 
 CREATE TABLE itens_pedido (
@@ -30,6 +31,7 @@ CREATE TABLE pendencias (
     camisa varchar(20) not null,
     tamanho varchar(1) check(tamanho in ('P', 'M', 'G')),
     quantidade integer not null,
+    situacao varchar(12) check(situacao in ('ABERTA', 'RESOLVIDA')),
     Unique (rid, camisa, tamanho)
 );
 
