@@ -2,5 +2,11 @@
     <wb-module deploy-name="prd-app-1.0-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="prd-api-1.0-SNAPSHOT.war" deploy-path="/" handle="module:/resource/prd-api/prd-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prd-biz-1.0-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/prd-biz/prd-biz">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
