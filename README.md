@@ -138,12 +138,16 @@ no [site do produto](https://www.docker.com/).
 
 #### Importante
 
-+ *Usuários e Senha:*  As configurações de usuário, senha do BD estão disponíveis como arquivos de configuração do Docker
++ **Usuários e Senha:**  As configurações de usuário, senha do BD estão disponíveis como arquivos de configuração do Docker
 (_Dockerfile-dist-db_ e _Dockerfile-prd-db_) na forma de variáveis (_POSTGRES_USER_ e _POSTGRES_PASSWORD_). Caso desejem
-alterá-las, lembrem-se de reproduzir a mudança no arquivo de configuração do servidor de aplicação que está no caminho
+alterá-las*, lembrem-se de reproduzir a mudança no arquivo de configuração do servidor de aplicação que está no caminho
 [rnrprojs/dist/](rnrprojs/dist/).
 
-+ *Início do Ambiente, Construção e Deploy:* Use o Docker Compose para iniciar o ambiente configurado e o Maven para
++ **Recursos:** Filas e DataSources podem ser criados no Console de Gerenciamento do Produto, por meio de um cliente
+desktop (Jboss Cli) ou no arquivo de configuração standalone_custom.xml. Para esse trabalho, arquivos de configuração estão disponíveis nos próprios projetos e são empacotados nos binários de aplicação. Vejam os arquivos \*-ds.xml e
+\*-jms.xml que estão no META-INF dos projetos EJB e EAR.
+
++ **Início do Ambiente, Construção e Deploy:** Use o Docker Compose para iniciar o ambiente configurado e o Maven para
 preparar os binários. O deploy acontecerá por meio de cópia de arquivos no sistema de arquivos. Você deverá escolher uma
 pasta onde copiará os binários para testar e informá-la ao Compose por meio do arquivo de configuração
 (_docker-compose.yml_). No exemplo abaixo, você está mapeando a área de deployments do container docker
@@ -168,7 +172,8 @@ mvn clean package
 cp dist-app/target/dist-app.ear /tmp/deployments
 ```
 
-O processo de deploy informa por meio de um arquivo se houve sucesso (deployed) ou não (failed).
+O processo de deploy informa por meio de um arquivo se houve sucesso (deployed) ou não (failed). Ver
+[documentação](https://docs.jboss.org/author/display/WFLY10/Application+deployment).
 
 ### Entrega
 A Entrega final consistirá:
